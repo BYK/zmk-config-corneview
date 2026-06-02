@@ -18,7 +18,7 @@ original Iris, with numbers and navigation on a single RAISE layer.
 | 0 | COLEMAK  | Default at boot                              |
 | 1 | QWERTY   | ADJUST → tap **QWRT**                        |
 | 2 | ADJUST   | Tap/hold the **left inner thumb**            |
-| 3 | RAISE    | Tap/hold the **right outer thumb**, or hold **Tab** |
+| 3 | RAISE    | Tap/hold the **right outer thumb**           |
 
 > **Smart layer keys:** the ADJUST and RAISE thumb keys are dual-action:
 > **tap = toggle the layer on/off (it stays on)**, **hold = momentary (only while held)**.
@@ -30,13 +30,12 @@ original Iris, with numbers and navigation on a single RAISE layer.
 ```
 ,-----------------------------------------.                ,-----------------------------------------.
 | TAB  |  Q  |  W  |  F  |  P  |  G  |                      |  J  |  L  |  U  |  Y  |  ;  | ESC  |
-| /RSE |     |     |     |     |     |                      |     |     |     |     |     | /C+A |
 |------+-----+-----+-----+-----+-----|                      |-----+-----+-----+-----+-----+------|
 | BSPC |  A  |  R  |  S  |  T  |  D  |                      |  H  |  N  |  E  |  I  |  O  |  '   |
-| /SFT |     |     |     |     |     |                      |     |     |     |     |     |      |
+| /SFT |     |     |     |     |     |                      |     |     |     |     |     | /SFT |
 |------+-----+-----+-----+-----+-----|                      |-----+-----+-----+-----+-----+------|
 |  [   |  Z  |  X  |  C  |  V  |  B  |                      |  K  |  M  |  ,  |  .  |  /  |  ]   |
-| /C+S |     |     |     |     |     |                      |     |     |     |     |     | /SFT |
+| /C+S |     |     |     |     |     |                      |     |     |     |     |     | /C+A |
 `-----------------------------------'                      `------------------------------------'
                    | ADJ | SPC | DEL |                      | ENT | GUI | RSE |
                    |     | /ALT| /CTL|                      | /CTL|     |     |
@@ -52,12 +51,12 @@ The tap action prints; the hold action acts as a modifier or layer.
 
 | Key (position)      | Tap       | Hold              |
 |---------------------|-----------|-------------------|
-| Top-left **TAB**    | Tab       | RAISE layer       |
-| Top-right **ESC**   | Esc       | **Ctrl + Alt**    |
+| Top-left **TAB**    | Tab       | —                 |
+| Top-right **ESC**   | Esc       | —                 |
 | Mid-left **BSPC**   | Backspace | Left Shift        |
-| Mid-right **'**     | `'`       | —                 |
+| Mid-right **'**     | `'`       | Right Shift       |
 | Bottom-left **[**   | `[`       | **Ctrl + Shift**  |
-| Bottom-right **]**  | `]`       | Right Shift       |
+| Bottom-right **]**  | `]`       | **Ctrl + Alt**    |
 | Left thumb (inner)  | toggle ADJUST | momentary ADJUST |
 | Left thumb (middle) **SPC** | Space | Left Alt      |
 | Left thumb (outer) **DEL**  | Delete | Left Ctrl     |
@@ -70,7 +69,7 @@ The tap action prints; the hold action acts as a modifier or layer.
 
 ## Numbers, arrows & media — the RAISE layer
 
-Hold **Tab** or tap/hold the **right outer thumb**. The top row is the number row
+Tap/hold the **right outer thumb**. The top row is the number row
 (like the old Iris), the right hand has an inverted-T arrow cluster + nav, and the
 left hand has media/volume:
 
