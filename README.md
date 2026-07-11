@@ -6,10 +6,17 @@ original Iris, with numbers and navigation on a single RAISE layer.
 
 ## Hardware
 
-- **Board:** nice_nano_v2 (both halves)
-- **Display:** nice_view
-- **Underglow:** WS2812 addressable strip
-- Built via GitHub Actions — see [Building & flashing](#building--flashing).
+This repo builds the **same keymap** for two keyboards:
+
+| Keyboard | Controller | Feedback | Keymap file |
+|----------|-----------|----------|-------------|
+| **Corne v2** | nice_nano_v2 + `corne` shield | nice_view display | `config/corne.keymap` |
+| **Corne Min** | `corne_min_left/right` boards (MechboardsLTD) + `rgbled_adapter` | RGB LED indicator (battery/BT) + ZMK Studio | `config/corne_min.keymap` |
+
+Both share the same 42-key layout, so the keymaps are identical apart from
+hardware-specific bits (the Corne Min has no WS2812 underglow and no nice_view, and
+uses an RGB indicator LED instead). Built via GitHub Actions — see
+[Building & flashing](#building--flashing).
 
 ## Layers at a glance
 
@@ -147,13 +154,30 @@ and layout switching:
 ## Building & flashing
 
 Pushing to GitHub triggers the **Build** GitHub Action, which compiles firmware for
-both halves (with nice_view). Download the `.uf2` artifacts from the Actions run.
+both keyboards. Download the `.uf2` artifacts from the Actions run:
+
+**Corne v2 (nice_view):**
+- `corne_left nice_view_adapter nice_view` + `corne_right nice_view_adapter nice_view`
+
+**Corne Min:**
+- `corne_min_left_with_studio` — left (central) half, includes ZMK Studio support
+- `corne_min_right` — right (peripheral) half
 
 To flash each half:
 
 1. Put the half into bootloader mode — double-tap the reset button, **or** press the
    **BOOT** key on the ADJUST layer.
 2. It mounts as a USB drive; copy the matching `.uf2` onto it.
-3. Repeat for the other half.
+3. Repeat for the other half — **only flash `.uf2`s for the keyboard you own.**
 
 > **Flash both halves** whenever the keymap changes, so they stay in sync.
+
+### Corne Min notes
+
+- The RGB indicator LED blinks battery level and Bluetooth status automatically on
+  boot and profile changes. On the ADJUST layer, **BAT** (`&ind_bat`) and **CON**
+  (`&ind_con`) show them on demand.
+- The Corne Min build has no WS2812 underglow, so the ADJUST layer's RGB color
+  controls (present on the nice_view Corne) are omitted here.
+- **ZMK Studio:** the `corne_min_left_with_studio` firmware lets you edit the keymap
+  live at [zmk.studio](https://zmk.studio/) over USB.

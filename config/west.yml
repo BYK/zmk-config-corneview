@@ -10,5 +10,12 @@ manifest:
     - name: zmk
       remote: zmkfirmware
       import: app/west.yml
+    # Corne Min custom boards + RGB LED widget (MechboardsLTD)
+    - name: corne-min-board
+      url: https://github.com/MechboardsLTD/zmk-module
+      revision: corne-min
+    - name: corne-min-rgbled
+      url: https://github.com/MechboardsLTD/zmk-module
+      revision: corne-min-rgbled
   self:
     path: config

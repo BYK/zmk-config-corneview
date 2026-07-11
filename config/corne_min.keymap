@@ -1,0 +1,125 @@
+/*
+ * Copyright (c) 2020 The ZMK Contributors
+ *
+ * SPDX-License-Identifier: MIT
+ *
+ * Corne Min variant of the corne.keymap layout (ported from a QMK Iris keymap).
+ * Same 42-key matrix, so the layout is identical to config/corne.keymap.
+ *
+ * Hardware differences handled here:
+ *   - No WS2812 underglow: manual &rgb_ug keys are dropped.
+ *   - RGB LED indicator (rgbled_adapter) shows battery / BT automatically;
+ *     &ind_bat / &ind_con expose them on demand from the ADJUST layer.
+ *   - No nice_view: the &nice_view_spi node is omitted.
+ *
+ * Layers:
+ *   0 COLEMAK (default, compiled boot default)
+ *   1 QWERTY
+ *   2 ADJUST  (F-keys, Bluetooth, layout switch, bootloader, LED indicators)
+ *   3 RAISE   (numbers, inverted-T arrows / nav, media, volume)
+ *
+ * Symbols: type via RAISE + Shift + number row.
+ * Ctrl+arrows (word movement): hold left-thumb DEL/CTRL + right-thumb RAISE,
+ *   then use the inverted-T arrows.
+ */
+
+#include <behaviors.dtsi>
+#include <behaviors/rgbled_widget.dtsi>
+#include <dt-bindings/zmk/keys.h>
+#include <dt-bindings/zmk/bt.h>
+#include <dt-bindings/zmk/outputs.h>
+
+#define COLEMAK 0
+#define QWERTY  1
+#define ADJUST  2
+#define RAISE   3
+
+/ {
+        behaviors {
+                // Tap = key, Hold = modifier. Mirrors QMK's *_T() mod-taps.
+                // "balanced" approximates QMK's PERMISSIVE_HOLD.
+                ht: hold_tap {
+                        compatible = "zmk,behavior-hold-tap";
+                        #binding-cells = <2>;
+                        tapping-term-ms = <200>;
+                        quick-tap-ms = <0>;
+                        flavor = "balanced";
+                        bindings = <&kp>, <&kp>;
+                };
+
+                // Tap = toggle layer (permanent on/off); Hold = momentary layer.
+                // hold-preferred so holding reliably gives the momentary &mo.
+                lt_tog: layer_tap_toggle {
+                        compatible = "zmk,behavior-hold-tap";
+                        #binding-cells = <2>;
+                        tapping-term-ms = <200>;
+                        quick-tap-ms = <0>;
+                        flavor = "hold-preferred";
+                        bindings = <&mo>, <&tog>;
+                };
+        };
+
+        keymap {
+                compatible = "zmk,keymap";
+
+                // -----------------------------------------------------------------------------------------
+                // |   TAB   |  Q  |  W  |  F  |  P  |  G  |   |  J  |  L  |  U  |  Y  |  ;  |   ESC   |
+                // | BSP/SFT |  A  |  R  |  S  |  T  |  D  |   |  H  |  N  |  E  |  I  |  O  |  '/RSFT |
+                // | [/C+S   |  Z  |  X  |  C  |  V  |  B  |   |  K  |  M  |  ,  |  .  |  /  | ]/C+A   |
+                //              | ADJ | SPC/ALT | DEL/CTL |   | ENT/RCTL | GUI | RSE |
+                colemak_layer {
+                        display-name = "Colemak";
+                        bindings = <
+   &kp TAB            &kp Q &kp W &kp F &kp P &kp G      &kp J &kp L  &kp U     &kp Y   &kp SEMI &kp ESC
+   &ht LSHFT BSPC     &kp A &kp R &kp S &kp T &kp D      &kp H &kp N  &kp E     &kp I   &kp O    &ht RSHFT SQT
+   &ht LC(LSHFT) LBKT &kp Z &kp X &kp C &kp V &kp B      &kp K &kp M  &kp COMMA &kp DOT &kp FSLH &ht LC(LALT) RBKT
+          &lt_tog ADJUST ADJUST &mt LALT SPACE &mt LCTRL DEL      &ht RCTRL RET &kp LGUI &lt_tog RAISE RAISE
+                        >;
+                };
+
+                // -----------------------------------------------------------------------------------------
+                // |   TAB   |  Q  |  W  |  E  |  R  |  T  |   |  Y  |  U  |  I  |  O  |  P  |   ESC   |
+                // | BSP/SFT |  A  |  S  |  D  |  F  |  G  |   |  H  |  J  |  K  |  L  |  ;  |  '/RSFT |
+                // | [/C+S   |  Z  |  X  |  C  |  V  |  B  |   |  N  |  M  |  ,  |  .  |  /  | ]/C+A   |
+                //              | ADJ | SPC/ALT | DEL/CTL |   | ENT/RCTL | GUI | RSE |
+                qwerty_layer {
+                        display-name = "QWERTY";
+                        bindings = <
+   &kp TAB            &kp Q &kp W &kp E &kp R &kp T      &kp Y &kp U  &kp I     &kp O   &kp P    &kp ESC
+   &ht LSHFT BSPC     &kp A &kp S &kp D &kp F &kp G      &kp H &kp J  &kp K     &kp L   &kp SEMI &ht RSHFT SQT
+   &ht LC(LSHFT) LBKT &kp Z &kp X &kp C &kp V &kp B      &kp N &kp M  &kp COMMA &kp DOT &kp FSLH &ht LC(LALT) RBKT
+          &lt_tog ADJUST ADJUST &mt LALT SPACE &mt LCTRL DEL      &ht RCTRL RET &kp LGUI &lt_tog RAISE RAISE
+                        >;
+                };
+
+                // -----------------------------------------------------------------------------------------
+                // | F12 |  F1 |  F2 |  F3 |  F4 |  F5 |   |  F6 |  F7 |  F8 |  F9 | F10 | BOOT |
+                // | OUT | BT0 | BT1 | BT2 | BT3 | BT4 |   | BAT | CON |     |     | F11 |      |
+                // |CLMK | QWRT| CLR |     |     |     |   |     |     |     |     |     |      |
+                //               |    |    |    |   |    |    |    |
+                adjust_layer {
+                        display-name = "Adjust";
+                        bindings = <
+   &kp F12     &kp F1       &kp F2       &kp F3       &kp F4       &kp F5         &kp F6   &kp F7   &kp F8 &kp F9 &kp F10 &bootloader
+   &out OUT_TOG &bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_SEL 3 &bt BT_SEL 4   &ind_bat &ind_con &trans &trans &kp F11 &trans
+   &to COLEMAK  &to QWERTY   &bt BT_CLR   &trans       &trans       &trans         &trans   &trans   &trans &trans &trans  &trans
+                                          &trans       &trans       &trans            &trans   &trans   &trans
+                        >;
+                };
+
+                // -----------------------------------------------------------------------------------------
+                // |  ` |  1 |  2 |  3 |  4 |  5 |   |  6   |  7  |  8  |  9   |  0   |  -  |
+                // |  = | MPV| MPP| MNX|    |    |   | HOME |  UP | END |  \   |      |     |
+                // |    | MUT| VL-| VL+|    |    |   | PGUP | LFT | DWN | RGT  | PGDN |     |
+                //                  |    |    |    |   |    |    |    |
+                raise_layer {
+                        display-name = "Raise";
+                        bindings = <
+   &kp GRAVE &kp N1     &kp N2       &kp N3       &kp N4 &kp N5     &kp N6   &kp N7   &kp N8   &kp N9    &kp N0   &kp MINUS
+   &kp EQUAL &kp C_PREV &kp C_PP     &kp C_NEXT   &trans &trans     &kp HOME &kp UP   &kp END  &kp BSLH  &trans   &trans
+   &trans    &kp C_MUTE &kp C_VOL_DN &kp C_VOL_UP &trans &trans     &kp PG_UP &kp LEFT &kp DOWN &kp RIGHT &kp PG_DN &trans
+                                     &trans &trans &trans         &trans   &trans   &trans
+                        >;
+                };
+        };
+};
