@@ -63,7 +63,7 @@ The tap action prints; the hold action acts as a modifier or layer.
 | Mid-left **TAB**    | Tab       | Left Shift        |
 | Mid-right **'**     | `'`       | Right Shift       |
 | Bottom-left **[**   | `[`       | **Ctrl + Shift**  |
-| Bottom-right **]**  | `]`       | **Ctrl + Alt**    |
+| Bottom-right **]**  | `]`       | **RAISE + Left Shift** |
 | Left thumb (inner)  | toggle ADJUST | momentary ADJUST |
 | Left thumb (middle) **SPC** | Space | Left Alt (tap-preferred) |
 | Left thumb (outer) **DEL**  | Delete | Left Ctrl     |
@@ -102,10 +102,14 @@ left hand has media/volume. Esc and GUI sit on the top corners:
 
 ### Symbols
 
-There's no separate symbols layer. Type symbols the natural way:
-**RAISE + Shift + number** → e.g. RAISE makes `4`, Shift makes it `$`.
+There's no separate symbols layer. Two ways to type them:
+
+- **One key:** hold the bottom-right **]** key — it engages RAISE **and** Left Shift
+  together, so the number row types `!@#$%^&*()` while held (and Shift+arrows selects).
+- **Manual:** **RAISE + Shift + number** → e.g. RAISE makes `4`, Shift makes it `$`.
+
 (`!@#$%^&*()` are just shifted digits; `_ + { } | :` etc. come from shifting the
-other RAISE/base keys.)
+other RAISE/base keys. The RAISE `=` key also holds Left Shift.)
 
 ### Word movement (Ctrl + arrows)
 
