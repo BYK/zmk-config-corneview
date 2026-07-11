@@ -18,9 +18,15 @@
  *   2 ADJUST  (F-keys, Bluetooth, layout switch, bootloader, LED indicators)
  *   3 RAISE   (numbers, inverted-T arrows / nav, media, volume)
  *
+ * Layer access:
+ *   - RAISE: hold (or tap to toggle) EITHER thumb layer key (left-inner or right-outer).
+ *   - ADJUST: hold BOTH thumb layer keys together (combo).
+ *
  * Symbols: type via RAISE + Shift + number row.
- * Ctrl+arrows (word movement): hold left-thumb DEL/CTRL + right-thumb RAISE,
- *   then use the inverted-T arrows.
+ * Ctrl+arrows (word movement): hold left-thumb DEL/CTRL + a RAISE thumb, then use arrows.
+ *
+ * The space thumb uses a tap-preferred mod-tap, so fast "space then key" always types a
+ * space; Alt only engages if space is actually held past the tapping term.
  */
 
 #include <behaviors.dtsi>
@@ -57,38 +63,60 @@
                         flavor = "hold-preferred";
                         bindings = <&mo>, <&tog>;
                 };
+
+                // Space/Alt: tap-preferred so it only becomes Alt when actually held past
+                // the tapping term — fast "space then letter" rolls type a plain space.
+                smt: space_mod_tap {
+                        compatible = "zmk,behavior-hold-tap";
+                        #binding-cells = <2>;
+                        tapping-term-ms = <200>;
+                        quick-tap-ms = <175>;
+                        flavor = "tap-preferred";
+                        bindings = <&kp>, <&kp>;
+                };
+        };
+
+        combos {
+                compatible = "zmk,combos";
+                // Hold BOTH thumb RAISE keys (positions 36 + 41) together for ADJUST.
+                combo_adjust {
+                        timeout-ms = <50>;
+                        key-positions = <36 41>;
+                        bindings = <&mo ADJUST>;
+                        layers = <COLEMAK QWERTY>;
+                };
         };
 
         keymap {
                 compatible = "zmk,keymap";
 
                 // -----------------------------------------------------------------------------------------
-                // |   ESC   |  Q  |  W  |  F  |  P  |  G  |   |  J  |  L  |  U  |  Y  |  ;  |   GUI   |
+                // |    `    |  Q  |  W  |  F  |  P  |  G  |   |  J  |  L  |  U  |  Y  |  ;  |    -    |
                 // | TAB/SFT |  A  |  R  |  S  |  T  |  D  |   |  H  |  N  |  E  |  I  |  O  |  '/RSFT |
                 // | [/C+S   |  Z  |  X  |  C  |  V  |  B  |   |  K  |  M  |  ,  |  .  |  /  | ]/C+A   |
-                //              | ADJ | SPC/ALT | DEL/CTL |   | ENT/RCTL | BSPC | RSE |
+                //              | RSE | SPC/ALT | DEL/CTL |   | ENT/RCTL | BSPC | RSE |
                 colemak_layer {
                         display-name = "Colemak";
                         bindings = <
-   &kp ESC            &kp Q &kp W &kp F &kp P &kp G      &kp J &kp L  &kp U     &kp Y   &kp SEMI &kp LGUI
+   &kp GRAVE          &kp Q &kp W &kp F &kp P &kp G      &kp J &kp L  &kp U     &kp Y   &kp SEMI &kp MINUS
    &ht LSHFT TAB      &kp A &kp R &kp S &kp T &kp D      &kp H &kp N  &kp E     &kp I   &kp O    &ht RSHFT SQT
    &ht LC(LSHFT) LBKT &kp Z &kp X &kp C &kp V &kp B      &kp K &kp M  &kp COMMA &kp DOT &kp FSLH &ht LC(LALT) RBKT
-          &lt_tog ADJUST ADJUST &mt LALT SPACE &mt LCTRL DEL      &ht RCTRL RET &kp BSPC &lt_tog RAISE RAISE
+           &lt_tog RAISE RAISE &smt LALT SPACE &mt LCTRL DEL      &ht RCTRL RET &kp BSPC &lt_tog RAISE RAISE
                         >;
                 };
 
                 // -----------------------------------------------------------------------------------------
-                // |   ESC   |  Q  |  W  |  E  |  R  |  T  |   |  Y  |  U  |  I  |  O  |  P  |   GUI   |
+                // |    `    |  Q  |  W  |  E  |  R  |  T  |   |  Y  |  U  |  I  |  O  |  P  |    -    |
                 // | TAB/SFT |  A  |  S  |  D  |  F  |  G  |   |  H  |  J  |  K  |  L  |  ;  |  '/RSFT |
                 // | [/C+S   |  Z  |  X  |  C  |  V  |  B  |   |  N  |  M  |  ,  |  .  |  /  | ]/C+A   |
-                //              | ADJ | SPC/ALT | DEL/CTL |   | ENT/RCTL | BSPC | RSE |
+                //              | RSE | SPC/ALT | DEL/CTL |   | ENT/RCTL | BSPC | RSE |
                 qwerty_layer {
                         display-name = "QWERTY";
                         bindings = <
-   &kp ESC            &kp Q &kp W &kp E &kp R &kp T      &kp Y &kp U  &kp I     &kp O   &kp P    &kp LGUI
+   &kp GRAVE          &kp Q &kp W &kp E &kp R &kp T      &kp Y &kp U  &kp I     &kp O   &kp P    &kp MINUS
    &ht LSHFT TAB      &kp A &kp S &kp D &kp F &kp G      &kp H &kp J  &kp K     &kp L   &kp SEMI &ht RSHFT SQT
    &ht LC(LSHFT) LBKT &kp Z &kp X &kp C &kp V &kp B      &kp N &kp M  &kp COMMA &kp DOT &kp FSLH &ht LC(LALT) RBKT
-          &lt_tog ADJUST ADJUST &mt LALT SPACE &mt LCTRL DEL      &ht RCTRL RET &kp BSPC &lt_tog RAISE RAISE
+           &lt_tog RAISE RAISE &smt LALT SPACE &mt LCTRL DEL      &ht RCTRL RET &kp BSPC &lt_tog RAISE RAISE
                         >;
                 };
 
@@ -108,16 +136,16 @@
                 };
 
                 // -----------------------------------------------------------------------------------------
-                // |  ` |  1 |  2 |  3 |  4 |  5 |   |  6   |  7  |  8  |  9   |  0   |  -  |
-                // |  = | MPV| MPP| MNX|    |    |   | HOME |  UP | END |  \   |      |     |
-                // |    | MUT| VL-| VL+|    |    |   | PGUP | LFT | DWN | RGT  | PGDN |     |
+                // | ESC |  1 |  2 |  3 |  4 |  5 |   |  6   |  7   |  8  |  9   |  0  | GUI |
+                // |  =  | MPV| MPP| MNX|    |    |   | PGUP | HOME |  UP | END  |  \  |     |
+                // |     | MUT| VL-| VL+|    |    |   | PGDN | LEFT | DWN | RGT  |     |     |
                 //                  |    |    |    |   |    |    |    |
                 raise_layer {
                         display-name = "Raise";
                         bindings = <
-   &kp GRAVE &kp N1     &kp N2       &kp N3       &kp N4 &kp N5     &kp N6   &kp N7   &kp N8   &kp N9    &kp N0   &kp MINUS
-   &kp EQUAL &kp C_PREV &kp C_PP     &kp C_NEXT   &trans &trans     &kp HOME &kp UP   &kp END  &kp BSLH  &trans   &trans
-   &trans    &kp C_MUTE &kp C_VOL_DN &kp C_VOL_UP &trans &trans     &kp PG_UP &kp LEFT &kp DOWN &kp RIGHT &kp PG_DN &trans
+   &kp ESC   &kp N1     &kp N2       &kp N3       &kp N4 &kp N5     &kp N6    &kp N7   &kp N8   &kp N9    &kp N0   &kp LGUI
+   &kp EQUAL &kp C_PREV &kp C_PP     &kp C_NEXT   &trans &trans     &kp PG_UP &kp HOME &kp UP   &kp END   &kp BSLH &trans
+   &trans    &kp C_MUTE &kp C_VOL_DN &kp C_VOL_UP &trans &trans     &kp PG_DN &kp LEFT &kp DOWN &kp RIGHT &trans   &trans
                                      &trans &trans &trans         &trans   &trans   &trans
                         >;
                 };

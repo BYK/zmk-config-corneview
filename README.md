@@ -24,19 +24,21 @@ uses an RGB indicator LED instead). Built via GitHub Actions — see
 |---|----------|----------------------------------------------|
 | 0 | COLEMAK  | Default at boot                              |
 | 1 | QWERTY   | ADJUST → tap **QWRT**                        |
-| 2 | ADJUST   | Tap/hold the **left inner thumb**            |
-| 3 | RAISE    | Tap/hold the **right outer thumb**           |
+| 3 | RAISE    | Tap/hold **either** thumb layer key (left-inner or right-outer) |
+| 2 | ADJUST   | Hold **both** thumb layer keys together      |
 
-> **Smart layer keys:** the ADJUST and RAISE thumb keys are dual-action:
-> **tap = toggle the layer on/off (it stays on)**, **hold = momentary (only while held)**.
-> A quick tap of RAISE locks you into numbers/arrows; tap again to go back. Holding it
-> gives that layer only while your thumb is down.
+> **Smart layer keys:** both thumb layer keys trigger **RAISE** and are dual-action:
+> **tap = toggle RAISE on/off (it stays on)**, **hold = momentary (only while held)**.
+> A quick tap locks you into numbers/arrows; tap again to go back.
+>
+> **ADJUST** is a combo: hold **both** thumb layer keys at the same time. (Press them
+> together within ~50 ms; if it feels finicky the combo timeout can be raised.)
 
 ## Base layer (Colemak)
 
 ```
 ,-----------------------------------------.                ,-----------------------------------------.
-| ESC  |  Q  |  W  |  F  |  P  |  G  |                      |  J  |  L  |  U  |  Y  |  ;  | GUI  |
+|  `   |  Q  |  W  |  F  |  P  |  G  |                      |  J  |  L  |  U  |  Y  |  ;  |  -   |
 |------+-----+-----+-----+-----+-----|                      |-----+-----+-----+-----+-----+------|
 | TAB  |  A  |  R  |  S  |  T  |  D  |                      |  H  |  N  |  E  |  I  |  O  |  '   |
 | /SFT |     |     |     |     |     |                      |     |     |     |     |     | /SFT |
@@ -44,7 +46,7 @@ uses an RGB indicator LED instead). Built via GitHub Actions — see
 |  [   |  Z  |  X  |  C  |  V  |  B  |                      |  K  |  M  |  ,  |  .  |  /  |  ]   |
 | /C+S |     |     |     |     |     |                      |     |     |     |     |     | /C+A |
 `-----------------------------------'                      `------------------------------------'
-                   | ADJ | SPC | DEL |                      | ENT | BSPC| RSE |
+                   | RSE | SPC | DEL |                      | ENT | BSPC| RSE |
                    |     | /ALT| /CTL|                      | /CTL|     |     |
                    `-----------------'                      `-----------------'
 ```
@@ -58,14 +60,14 @@ The tap action prints; the hold action acts as a modifier or layer.
 
 | Key (position)      | Tap       | Hold              |
 |---------------------|-----------|-------------------|
-| Top-left **ESC**    | Esc       | —                 |
-| Top-right **GUI**   | GUI / Super (Win) | —         |
+| Top-left **`**      | `` ` ``   | —                 |
+| Top-right **-**     | `-`       | —                 |
 | Mid-left **TAB**    | Tab       | Left Shift        |
 | Mid-right **'**     | `'`       | Right Shift       |
 | Bottom-left **[**   | `[`       | **Ctrl + Shift**  |
 | Bottom-right **]**  | `]`       | **Ctrl + Alt**    |
-| Left thumb (inner)  | toggle ADJUST | momentary ADJUST |
-| Left thumb (middle) **SPC** | Space | Left Alt      |
+| Left thumb (inner)  | toggle RAISE | momentary RAISE |
+| Left thumb (middle) **SPC** | Space | Left Alt (tap-preferred) |
 | Left thumb (outer) **DEL**  | Delete | Left Ctrl     |
 | Right thumb (inner) **ENT** | Enter | **Right Ctrl** |
 | Right thumb (middle) **BSPC**| Backspace | —         |
@@ -73,26 +75,30 @@ The tap action prints; the hold action acts as a modifier or layer.
 
 > Hold timing is 200 ms. Tap faster than that to get the tap action; hold longer to
 > get the modifier/layer.
+>
+> **Space** is *tap-preferred*: it only becomes Alt if you actually hold it past 200 ms,
+> so fast "space then letter" rolls always type a space (never Alt+letter). Esc and GUI
+> now live on the RAISE layer (top corners), not the base layer.
 
 ## Numbers, arrows & media — the RAISE layer
 
-Tap/hold the **right outer thumb**. The top row is the number row
+Hold (or tap to toggle) **either** thumb layer key. The top row is the number row
 (like the old Iris), the right hand has an inverted-T arrow cluster + nav, and the
-left hand has media/volume:
+left hand has media/volume. Esc and GUI sit on the top corners:
 
 ```
 ,-----------------------------------------.                ,-----------------------------------------.
-|  `   |  1  |  2  |  3  |  4  |  5  |                      |  6  |  7  |  8  |  9  |  0  |  -   |
+| ESC  |  1  |  2  |  3  |  4  |  5  |                      |  6  |  7  |  8  |  9  |  0  | GUI  |
 |------+-----+-----+-----+-----+-----|                      |-----+-----+-----+-----+-----+------|
-|  =   | <<  | >|| | >>  |     |     |                      | HOME|  UP | END |  \  |     |      |
+|  =   | <<  | >|| | >>  |     |     |                      | PGUP| HOME|  UP | END |  \  |      |
 |------+-----+-----+-----+-----+-----|                      |-----+-----+-----+-----+-----+------|
-|      | MUTE| VL- | VL+ |     |     |                      | PGUP| LFT | DWN | RGT | PGDN|      |
+|      | MUTE| VL- | VL+ |     |     |                      | PGDN| LEFT| DWN | RGT |     |      |
 `-----------------------------------'                      `------------------------------------'
 ```
 
-- **Numbers:** `` ` `` 1 2 3 4 5 / 6 7 8 9 0 `-` across the top row.
-- **Inverted-T arrows:** UP on the home row, LFT/DWN/RGT below it.
-- **Navigation:** HOME/END flank UP; PGUP/PGDN on the outer bottom; `\` next to END.
+- **Numbers:** 1 2 3 4 5 / 6 7 8 9 0 across the top row (Esc left corner, GUI right corner).
+- **Inverted-T arrows:** UP on the top-right row, LEFT/DOWN/RIGHT below it.
+- **Navigation:** HOME/END flank UP; PAGE UP/DOWN on the outer column; `\` next to END.
 - **Media:** prev / play-pause / next on the left home row.
 - **Volume:** mute / vol- / vol+ on the left bottom row.
 
@@ -105,14 +111,14 @@ other RAISE/base keys.)
 
 ### Word movement (Ctrl + arrows)
 
-Hold the **left-thumb DEL/CTRL** key (gives Left Ctrl) **and** the **right-thumb RAISE**
-key (activates arrows) at the same time, then press the inverted-T arrows.
+Hold the **left-thumb DEL/CTRL** key (gives Left Ctrl) **and** a **RAISE thumb**
+(activates arrows) at the same time, then press the inverted-T arrows.
 Ctrl+Left / Ctrl+Right jump by word. Add physical **Shift** for selection
 (Ctrl+Shift+arrow).
 
 ## ADJUST layer (settings)
 
-Tap/hold the **left inner thumb** to reach ADJUST — Bluetooth, RGB, function keys,
+Hold **both** thumb layer keys together to reach ADJUST — Bluetooth, RGB, function keys,
 and layout switching:
 
 ```
@@ -135,7 +141,7 @@ and layout switching:
 
 ### A note on Bluetooth pairing
 
-1. Tap/hold the **left inner thumb** to enter ADJUST.
+1. Hold **both** thumb layer keys together to enter ADJUST.
 2. Tap a **BT0–BT4** key to pick a profile slot.
 3. Pair from your computer/phone. To re-pair a slot, tap **CLR** first, then pair again.
 
