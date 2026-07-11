@@ -112,14 +112,14 @@
                 };
 
                 // -----------------------------------------------------------------------------------------
-                // | F12 |  F1 |  F2 |  F3 |  F4 |  F5 |   |  F6 |  F7 |  F8 |  F9 | F10 | BOOT |
-                // | OUT | BT0 | BT1 | BT2 | BT3 | BT4 |   | TOG | HU+ | SA+ | BR+ | F11 |      |
+                // | F12 |  F1 |  F2 |  F3 |  F4 |  F5 |   |  F6 |  F7 |  F8 |  F9 | F10 | F11  |
+                // | OUT | BT0 | BT1 | BT2 | BT3 | BT4 |   | TOG | HU+ | SA+ | BR+ | BOOT |     |
                 // |CLMK | QWRT| CLR |     |     |     |   | EFF | HU- | SA- | BR- |     |      |
                 //               |    |    |    |   |    |    |    |
                 adjust_layer {
                         bindings = <
-   &kp F12     &kp F1       &kp F2       &kp F3       &kp F4       &kp F5         &kp F6          &kp F7          &kp F8          &kp F9          &kp F10 &bootloader
-   &out OUT_TOG &bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_SEL 3 &bt BT_SEL 4   &rgb_ug RGB_TOG &rgb_ug RGB_HUI &rgb_ug RGB_SAI &rgb_ug RGB_BRI &kp F11 &trans
+   &kp F12     &kp F1       &kp F2       &kp F3       &kp F4       &kp F5         &kp F6          &kp F7          &kp F8          &kp F9          &kp F10 &kp F11
+   &out OUT_TOG &bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_SEL 3 &bt BT_SEL 4   &rgb_ug RGB_TOG &rgb_ug RGB_HUI &rgb_ug RGB_SAI &rgb_ug RGB_BRI &bootloader &trans
    &to COLEMAK  &to QWERTY   &bt BT_CLR   &trans       &trans       &trans         &rgb_ug RGB_EFF &rgb_ug RGB_HUD &rgb_ug RGB_SAD &rgb_ug RGB_BRD &trans  &trans
                                           &trans       &trans       &trans            &trans          &trans          &trans
                         >;

@@ -123,21 +123,21 @@ and layout switching:
 
 ```
 ,-----------------------------------------.                ,-----------------------------------------.
-| F12  |  F1 |  F2 |  F3 |  F4 |  F5 |                      |  F6 |  F7 |  F8 |  F9 | F10 | BOOT |
+| F12  |  F1 |  F2 |  F3 |  F4 |  F5 |                      |  F6 |  F7 |  F8 |  F9 | F10 | F11  |
 |------+-----+-----+-----+-----+-----|                      |-----+-----+-----+-----+-----+------|
-| OUT  | BT0 | BT1 | BT2 | BT3 | BT4 |                      | RGB | HUE+| SAT+| BRT+| F11 |      |
+| OUT  | BT0 | BT1 | BT2 | BT3 | BT4 |                      | RGB | HUE+| SAT+| BRT+| BOOT|      |
 |      |     |     |     |     |     |                      | TOG |     |     |     |     |      |
 |------+-----+-----+-----+-----+-----|                      |-----+-----+-----+-----+-----+------|
 | CLMK | QWRT| CLR |     |     |     |                      | EFF | HUE-| SAT-| BRT-|     |      |
 `-----------------------------------'                      `------------------------------------'
 ```
 
-- **F1–F12:** F1–F10 on the top row, F11 on the right home row, F12 on the top-left.
+- **F1–F12:** F1–F10 across the top row, F11 on the top-right corner, F12 on the top-left.
 - **Bluetooth:** `BT0`–`BT4` select profiles; **CLR** clears the current pairing;
   **OUT** toggles the output endpoint (USB ⇄ BLE).
 - **Layout switch:** **CLMK** → Colemak, **QWRT** → QWERTY.
 - **RGB:** **TOG** on/off, **EFF** cycle effect, **HUE/SAT/BRT ±** adjust color.
-- **BOOT:** enter the bootloader for flashing (top-right).
+- **BOOT:** enter the bootloader for flashing (second row, right side).
 
 ### A note on Bluetooth pairing
 
