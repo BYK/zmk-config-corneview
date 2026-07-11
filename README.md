@@ -36,15 +36,15 @@ uses an RGB indicator LED instead). Built via GitHub Actions — see
 
 ```
 ,-----------------------------------------.                ,-----------------------------------------.
-| TAB  |  Q  |  W  |  F  |  P  |  G  |                      |  J  |  L  |  U  |  Y  |  ;  | ESC  |
+| ESC  |  Q  |  W  |  F  |  P  |  G  |                      |  J  |  L  |  U  |  Y  |  ;  | GUI  |
 |------+-----+-----+-----+-----+-----|                      |-----+-----+-----+-----+-----+------|
-| BSPC |  A  |  R  |  S  |  T  |  D  |                      |  H  |  N  |  E  |  I  |  O  |  '   |
+| TAB  |  A  |  R  |  S  |  T  |  D  |                      |  H  |  N  |  E  |  I  |  O  |  '   |
 | /SFT |     |     |     |     |     |                      |     |     |     |     |     | /SFT |
 |------+-----+-----+-----+-----+-----|                      |-----+-----+-----+-----+-----+------|
 |  [   |  Z  |  X  |  C  |  V  |  B  |                      |  K  |  M  |  ,  |  .  |  /  |  ]   |
 | /C+S |     |     |     |     |     |                      |     |     |     |     |     | /C+A |
 `-----------------------------------'                      `------------------------------------'
-                   | ADJ | SPC | DEL |                      | ENT | GUI | RSE |
+                   | ADJ | SPC | DEL |                      | ENT | BSPC| RSE |
                    |     | /ALT| /CTL|                      | /CTL|     |     |
                    `-----------------'                      `-----------------'
 ```
@@ -58,9 +58,9 @@ The tap action prints; the hold action acts as a modifier or layer.
 
 | Key (position)      | Tap       | Hold              |
 |---------------------|-----------|-------------------|
-| Top-left **TAB**    | Tab       | —                 |
-| Top-right **ESC**   | Esc       | —                 |
-| Mid-left **BSPC**   | Backspace | Left Shift        |
+| Top-left **ESC**    | Esc       | —                 |
+| Top-right **GUI**   | GUI / Super (Win) | —         |
+| Mid-left **TAB**    | Tab       | Left Shift        |
 | Mid-right **'**     | `'`       | Right Shift       |
 | Bottom-left **[**   | `[`       | **Ctrl + Shift**  |
 | Bottom-right **]**  | `]`       | **Ctrl + Alt**    |
@@ -68,7 +68,7 @@ The tap action prints; the hold action acts as a modifier or layer.
 | Left thumb (middle) **SPC** | Space | Left Alt      |
 | Left thumb (outer) **DEL**  | Delete | Left Ctrl     |
 | Right thumb (inner) **ENT** | Enter | **Right Ctrl** |
-| Right thumb (middle) **GUI**| GUI / Super | —        |
+| Right thumb (middle) **BSPC**| Backspace | —         |
 | Right thumb (outer) | toggle RAISE | momentary RAISE |
 
 > Hold timing is 200 ms. Tap faster than that to get the tap action; hold longer to

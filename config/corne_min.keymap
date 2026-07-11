@@ -63,32 +63,32 @@
                 compatible = "zmk,keymap";
 
                 // -----------------------------------------------------------------------------------------
-                // |   TAB   |  Q  |  W  |  F  |  P  |  G  |   |  J  |  L  |  U  |  Y  |  ;  |   ESC   |
-                // | BSP/SFT |  A  |  R  |  S  |  T  |  D  |   |  H  |  N  |  E  |  I  |  O  |  '/RSFT |
+                // |   ESC   |  Q  |  W  |  F  |  P  |  G  |   |  J  |  L  |  U  |  Y  |  ;  |   GUI   |
+                // | TAB/SFT |  A  |  R  |  S  |  T  |  D  |   |  H  |  N  |  E  |  I  |  O  |  '/RSFT |
                 // | [/C+S   |  Z  |  X  |  C  |  V  |  B  |   |  K  |  M  |  ,  |  .  |  /  | ]/C+A   |
-                //              | ADJ | SPC/ALT | DEL/CTL |   | ENT/RCTL | GUI | RSE |
+                //              | ADJ | SPC/ALT | DEL/CTL |   | ENT/RCTL | BSPC | RSE |
                 colemak_layer {
                         display-name = "Colemak";
                         bindings = <
-   &kp TAB            &kp Q &kp W &kp F &kp P &kp G      &kp J &kp L  &kp U     &kp Y   &kp SEMI &kp ESC
-   &ht LSHFT BSPC     &kp A &kp R &kp S &kp T &kp D      &kp H &kp N  &kp E     &kp I   &kp O    &ht RSHFT SQT
+   &kp ESC            &kp Q &kp W &kp F &kp P &kp G      &kp J &kp L  &kp U     &kp Y   &kp SEMI &kp LGUI
+   &ht LSHFT TAB      &kp A &kp R &kp S &kp T &kp D      &kp H &kp N  &kp E     &kp I   &kp O    &ht RSHFT SQT
    &ht LC(LSHFT) LBKT &kp Z &kp X &kp C &kp V &kp B      &kp K &kp M  &kp COMMA &kp DOT &kp FSLH &ht LC(LALT) RBKT
-          &lt_tog ADJUST ADJUST &mt LALT SPACE &mt LCTRL DEL      &ht RCTRL RET &kp LGUI &lt_tog RAISE RAISE
+          &lt_tog ADJUST ADJUST &mt LALT SPACE &mt LCTRL DEL      &ht RCTRL RET &kp BSPC &lt_tog RAISE RAISE
                         >;
                 };
 
                 // -----------------------------------------------------------------------------------------
-                // |   TAB   |  Q  |  W  |  E  |  R  |  T  |   |  Y  |  U  |  I  |  O  |  P  |   ESC   |
-                // | BSP/SFT |  A  |  S  |  D  |  F  |  G  |   |  H  |  J  |  K  |  L  |  ;  |  '/RSFT |
+                // |   ESC   |  Q  |  W  |  E  |  R  |  T  |   |  Y  |  U  |  I  |  O  |  P  |   GUI   |
+                // | TAB/SFT |  A  |  S  |  D  |  F  |  G  |   |  H  |  J  |  K  |  L  |  ;  |  '/RSFT |
                 // | [/C+S   |  Z  |  X  |  C  |  V  |  B  |   |  N  |  M  |  ,  |  .  |  /  | ]/C+A   |
-                //              | ADJ | SPC/ALT | DEL/CTL |   | ENT/RCTL | GUI | RSE |
+                //              | ADJ | SPC/ALT | DEL/CTL |   | ENT/RCTL | BSPC | RSE |
                 qwerty_layer {
                         display-name = "QWERTY";
                         bindings = <
-   &kp TAB            &kp Q &kp W &kp E &kp R &kp T      &kp Y &kp U  &kp I     &kp O   &kp P    &kp ESC
-   &ht LSHFT BSPC     &kp A &kp S &kp D &kp F &kp G      &kp H &kp J  &kp K     &kp L   &kp SEMI &ht RSHFT SQT
+   &kp ESC            &kp Q &kp W &kp E &kp R &kp T      &kp Y &kp U  &kp I     &kp O   &kp P    &kp LGUI
+   &ht LSHFT TAB      &kp A &kp S &kp D &kp F &kp G      &kp H &kp J  &kp K     &kp L   &kp SEMI &ht RSHFT SQT
    &ht LC(LSHFT) LBKT &kp Z &kp X &kp C &kp V &kp B      &kp N &kp M  &kp COMMA &kp DOT &kp FSLH &ht LC(LALT) RBKT
-          &lt_tog ADJUST ADJUST &mt LALT SPACE &mt LCTRL DEL      &ht RCTRL RET &kp LGUI &lt_tog RAISE RAISE
+          &lt_tog ADJUST ADJUST &mt LALT SPACE &mt LCTRL DEL      &ht RCTRL RET &kp BSPC &lt_tog RAISE RAISE
                         >;
                 };
 
