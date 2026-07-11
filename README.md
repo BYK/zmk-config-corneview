@@ -24,15 +24,13 @@ uses an RGB indicator LED instead). Built via GitHub Actions — see
 |---|----------|----------------------------------------------|
 | 0 | COLEMAK  | Default at boot                              |
 | 1 | QWERTY   | ADJUST → tap **QWRT**                        |
-| 3 | RAISE    | Tap/hold **either** thumb layer key (left-inner or right-outer) |
-| 2 | ADJUST   | Hold **both** thumb layer keys together      |
+| 3 | RAISE    | Tap/hold the **right-outer** thumb key       |
+| 2 | ADJUST   | Tap/hold the **left-inner** thumb key        |
 
-> **Smart layer keys:** both thumb layer keys trigger **RAISE** and are dual-action:
-> **tap = toggle RAISE on/off (it stays on)**, **hold = momentary (only while held)**.
-> A quick tap locks you into numbers/arrows; tap again to go back.
->
-> **ADJUST** is a combo: hold **both** thumb layer keys at the same time. (Press them
-> together within ~50 ms; if it feels finicky the combo timeout can be raised.)
+> **Smart layer keys:** the left-inner thumb (**ADJUST**) and right-outer thumb (**RAISE**)
+> are dual-action: **tap = toggle the layer on/off (it stays on)**, **hold = momentary
+> (only while held)**. A quick tap of RAISE locks you into numbers/arrows; tap again to
+> go back.
 
 ## Base layer (Colemak)
 
@@ -46,7 +44,7 @@ uses an RGB indicator LED instead). Built via GitHub Actions — see
 |  [   |  Z  |  X  |  C  |  V  |  B  |                      |  K  |  M  |  ,  |  .  |  /  |  ]   |
 | /C+S |     |     |     |     |     |                      |     |     |     |     |     | /C+A |
 `-----------------------------------'                      `------------------------------------'
-                   | RSE | SPC | DEL |                      | ENT | BSPC| RSE |
+                   | ADJ | SPC | DEL |                      | ENT | BSPC| RSE |
                    |     | /ALT| /CTL|                      | /CTL|     |     |
                    `-----------------'                      `-----------------'
 ```
@@ -66,7 +64,7 @@ The tap action prints; the hold action acts as a modifier or layer.
 | Mid-right **'**     | `'`       | Right Shift       |
 | Bottom-left **[**   | `[`       | **Ctrl + Shift**  |
 | Bottom-right **]**  | `]`       | **Ctrl + Alt**    |
-| Left thumb (inner)  | toggle RAISE | momentary RAISE |
+| Left thumb (inner)  | toggle ADJUST | momentary ADJUST |
 | Left thumb (middle) **SPC** | Space | Left Alt (tap-preferred) |
 | Left thumb (outer) **DEL**  | Delete | Left Ctrl     |
 | Right thumb (inner) **ENT** | Enter | **Right Ctrl** |
@@ -82,7 +80,7 @@ The tap action prints; the hold action acts as a modifier or layer.
 
 ## Numbers, arrows & media — the RAISE layer
 
-Hold (or tap to toggle) **either** thumb layer key. The top row is the number row
+Hold (or tap to toggle) the **right-outer** thumb key. The top row is the number row
 (like the old Iris), the right hand has an inverted-T arrow cluster + nav, and the
 left hand has media/volume. Esc and GUI sit on the top corners:
 
@@ -111,14 +109,14 @@ other RAISE/base keys.)
 
 ### Word movement (Ctrl + arrows)
 
-Hold the **left-thumb DEL/CTRL** key (gives Left Ctrl) **and** a **RAISE thumb**
-(activates arrows) at the same time, then press the inverted-T arrows.
+Hold the **left-thumb DEL/CTRL** key (gives Left Ctrl) **and** the **right-outer RAISE
+thumb** (activates arrows) at the same time, then press the inverted-T arrows.
 Ctrl+Left / Ctrl+Right jump by word. Add physical **Shift** for selection
 (Ctrl+Shift+arrow).
 
 ## ADJUST layer (settings)
 
-Hold **both** thumb layer keys together to reach ADJUST — Bluetooth, RGB, function keys,
+Tap/hold the **left-inner thumb** to reach ADJUST — Bluetooth, RGB, function keys,
 and layout switching:
 
 ```
@@ -141,7 +139,7 @@ and layout switching:
 
 ### A note on Bluetooth pairing
 
-1. Hold **both** thumb layer keys together to enter ADJUST.
+1. Tap/hold the **left-inner thumb** to enter ADJUST.
 2. Tap a **BT0–BT4** key to pick a profile slot.
 3. Pair from your computer/phone. To re-pair a slot, tap **CLR** first, then pair again.
 

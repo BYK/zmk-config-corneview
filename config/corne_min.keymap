@@ -19,8 +19,8 @@
  *   3 RAISE   (numbers, inverted-T arrows / nav, media, volume)
  *
  * Layer access:
- *   - RAISE: hold (or tap to toggle) EITHER thumb layer key (left-inner or right-outer).
- *   - ADJUST: hold BOTH thumb layer keys together (combo).
+ *   - RAISE: hold (or tap to toggle) the right-outer thumb key.
+ *   - ADJUST: hold (or tap to toggle) the left-inner thumb key.
  *
  * Symbols: type via RAISE + Shift + number row.
  * Ctrl+arrows (word movement): hold left-thumb DEL/CTRL + a RAISE thumb, then use arrows.
@@ -76,17 +76,6 @@
                 };
         };
 
-        combos {
-                compatible = "zmk,combos";
-                // Hold BOTH thumb RAISE keys (positions 36 + 41) together for ADJUST.
-                combo_adjust {
-                        timeout-ms = <50>;
-                        key-positions = <36 41>;
-                        bindings = <&mo ADJUST>;
-                        layers = <COLEMAK QWERTY>;
-                };
-        };
-
         keymap {
                 compatible = "zmk,keymap";
 
@@ -94,14 +83,14 @@
                 // |    `    |  Q  |  W  |  F  |  P  |  G  |   |  J  |  L  |  U  |  Y  |  ;  |    -    |
                 // | TAB/SFT |  A  |  R  |  S  |  T  |  D  |   |  H  |  N  |  E  |  I  |  O  |  '/RSFT |
                 // | [/C+S   |  Z  |  X  |  C  |  V  |  B  |   |  K  |  M  |  ,  |  .  |  /  | ]/C+A   |
-                //              | RSE | SPC/ALT | DEL/CTL |   | ENT/RCTL | BSPC | RSE |
+                //              | ADJ | SPC/ALT | DEL/CTL |   | ENT/RCTL | BSPC | RSE |
                 colemak_layer {
                         display-name = "Colemak";
                         bindings = <
    &kp GRAVE          &kp Q &kp W &kp F &kp P &kp G      &kp J &kp L  &kp U     &kp Y   &kp SEMI &kp MINUS
    &ht LSHFT TAB      &kp A &kp R &kp S &kp T &kp D      &kp H &kp N  &kp E     &kp I   &kp O    &ht RSHFT SQT
    &ht LC(LSHFT) LBKT &kp Z &kp X &kp C &kp V &kp B      &kp K &kp M  &kp COMMA &kp DOT &kp FSLH &ht LC(LALT) RBKT
-           &lt_tog RAISE RAISE &smt LALT SPACE &mt LCTRL DEL      &ht RCTRL RET &kp BSPC &lt_tog RAISE RAISE
+           &lt_tog ADJUST ADJUST &smt LALT SPACE &mt LCTRL DEL      &ht RCTRL RET &kp BSPC &lt_tog RAISE RAISE
                         >;
                 };
 
@@ -109,14 +98,14 @@
                 // |    `    |  Q  |  W  |  E  |  R  |  T  |   |  Y  |  U  |  I  |  O  |  P  |    -    |
                 // | TAB/SFT |  A  |  S  |  D  |  F  |  G  |   |  H  |  J  |  K  |  L  |  ;  |  '/RSFT |
                 // | [/C+S   |  Z  |  X  |  C  |  V  |  B  |   |  N  |  M  |  ,  |  .  |  /  | ]/C+A   |
-                //              | RSE | SPC/ALT | DEL/CTL |   | ENT/RCTL | BSPC | RSE |
+                //              | ADJ | SPC/ALT | DEL/CTL |   | ENT/RCTL | BSPC | RSE |
                 qwerty_layer {
                         display-name = "QWERTY";
                         bindings = <
    &kp GRAVE          &kp Q &kp W &kp E &kp R &kp T      &kp Y &kp U  &kp I     &kp O   &kp P    &kp MINUS
    &ht LSHFT TAB      &kp A &kp S &kp D &kp F &kp G      &kp H &kp J  &kp K     &kp L   &kp SEMI &ht RSHFT SQT
    &ht LC(LSHFT) LBKT &kp Z &kp X &kp C &kp V &kp B      &kp N &kp M  &kp COMMA &kp DOT &kp FSLH &ht LC(LALT) RBKT
-           &lt_tog RAISE RAISE &smt LALT SPACE &mt LCTRL DEL      &ht RCTRL RET &kp BSPC &lt_tog RAISE RAISE
+           &lt_tog ADJUST ADJUST &smt LALT SPACE &mt LCTRL DEL      &ht RCTRL RET &kp BSPC &lt_tog RAISE RAISE
                         >;
                 };
 
