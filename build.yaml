@@ -35,3 +35,15 @@ include:
     shield: rgbled_adapter
     cmake-args: -DCONFIG_ZMK_BLE_EXPERIMENTAL_CONN=y
     artifact-name: corne_min_right
+
+  # --- Settings reset images (wipe ALL Bluetooth bonds, incl. split pairing) ---
+  # Flash to a half, let it boot once, then reflash the normal firmware.
+  - board: nice_nano_v2
+    shield: settings_reset
+    artifact-name: corne_reset
+  - board: corne_min_left
+    shield: settings_reset
+    artifact-name: corne_min_left_reset
+  - board: corne_min_right
+    shield: settings_reset
+    artifact-name: corne_min_right_reset
