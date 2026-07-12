@@ -42,7 +42,7 @@ uses an RGB indicator LED instead). Built via GitHub Actions — see
 | /SFT |     |     |     |     |     |                      |     |     |     |     |     | /SFT |
 |------+-----+-----+-----+-----+-----|                      |-----+-----+-----+-----+-----+------|
 |  [   |  Z  |  X  |  C  |  V  |  B  |                      |  K  |  M  |  ,  |  .  |  /  |  ]   |
-| /C+S |     |     |     |     |     |                      |     |     |     |     |     | /C+A |
+| /GUI |     |     |     |     |     |                      |     |     |     |     |     | /R+S |
 `-----------------------------------'                      `------------------------------------'
                    | ADJ | SPC | DEL |                      | ENT | BSPC| RSE |
                    |     | /ALT| /CTL|                      | /CTL|     |     |
@@ -62,7 +62,7 @@ The tap action prints; the hold action acts as a modifier or layer.
 | Top-right **-**     | `-`       | —                 |
 | Mid-left **TAB**    | Tab       | Left Shift        |
 | Mid-right **'**     | `'`       | Right Shift       |
-| Bottom-left **[**   | `[`       | **Ctrl + Shift**  |
+| Bottom-left **[**   | `[`       | **Left GUI (Super)** |
 | Bottom-right **]**  | `]`       | **RAISE + Left Shift** |
 | Left thumb (inner)  | toggle ADJUST | momentary ADJUST |
 | Left thumb (middle) **SPC** | Space | Left Alt (tap-preferred) |
