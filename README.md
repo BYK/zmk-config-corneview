@@ -71,12 +71,14 @@ The tap action prints; the hold action acts as a modifier or layer.
 | Right thumb (middle) **BSPC**| Backspace | —         |
 | Right thumb (outer) | toggle RAISE | momentary RAISE |
 
-> Hold timing is 200 ms. Tap faster than that to get the tap action; hold longer to
-> get the modifier/layer.
+> Hold timing is 150 ms (200 ms for Space). Tap faster than that to get the tap
+> action; hold longer to get the modifier/layer.
 >
 > **Tap-then-hold repeats** (like the Iris): tap a dual-function key, then immediately
-> press and hold it again (within 200 ms) — it repeats the *tapped* key instead of
-> triggering the modifier/layer. Works on Tab, `'`, `=`, `]`, Enter, Delete, and Space.
+> press and hold it again — it repeats the *tapped* key instead of triggering the
+> modifier/layer. Works on `=`, `]`, Enter, Delete, and Space. **Tab/Shift and `'`/RShift
+> do not** — quick-tap is disabled on the Shift keys so rapid Shift presses (e.g. two
+> capitals in a row) can never slip out as a stray Tab.
 >
 > **Space** is *tap-preferred*: it only becomes Alt if you actually hold it past 200 ms,
 > so fast "space then letter" rolls always type a space (never Alt+letter). Esc and GUI

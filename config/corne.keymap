@@ -38,12 +38,24 @@
         behaviors {
                 // Tap = key, Hold = modifier. Mirrors QMK's *_T() mod-taps.
                 // "balanced" approximates QMK's PERMISSIVE_HOLD.
-                // quick-tap-ms: tap, then tap-and-hold again within 200ms repeats the tap.
+                // quick-tap-ms: tap, then tap-and-hold again repeats the tap.
+                // Used for Enter/Ctrl (Shift keys use &hs, which has no quick-tap).
                 ht: hold_tap {
                         compatible = "zmk,behavior-hold-tap";
                         #binding-cells = <2>;
-                        tapping-term-ms = <200>;
+                        tapping-term-ms = <150>;
                         quick-tap-ms = <200>;
+                        flavor = "balanced";
+                        bindings = <&kp>, <&kp>;
+                };
+
+                // Shift keys (Tab/Shift, '/RShift, =/Shift): no quick-tap, so pressing
+                // Shift twice in quick succession never slips out a stray tap (e.g. Tab).
+                hs: hold_shift {
+                        compatible = "zmk,behavior-hold-tap";
+                        #binding-cells = <2>;
+                        tapping-term-ms = <150>;
+                        quick-tap-ms = <0>;
                         flavor = "balanced";
                         bindings = <&kp>, <&kp>;
                 };
@@ -53,7 +65,7 @@
                 mtq: mod_tap_quick {
                         compatible = "zmk,behavior-hold-tap";
                         #binding-cells = <2>;
-                        tapping-term-ms = <200>;
+                        tapping-term-ms = <150>;
                         quick-tap-ms = <200>;
                         flavor = "hold-preferred";
                         bindings = <&kp>, <&kp>;
@@ -64,7 +76,7 @@
                 lt_tog: layer_tap_toggle {
                         compatible = "zmk,behavior-hold-tap";
                         #binding-cells = <2>;
-                        tapping-term-ms = <200>;
+                        tapping-term-ms = <150>;
                         quick-tap-ms = <0>;
                         flavor = "hold-preferred";
                         bindings = <&mo>, <&tog>;
@@ -86,7 +98,7 @@
                 hrs: hold_raise_shift {
                         compatible = "zmk,behavior-hold-tap";
                         #binding-cells = <2>;
-                        tapping-term-ms = <200>;
+                        tapping-term-ms = <150>;
                         quick-tap-ms = <200>;
                         flavor = "balanced";
                         bindings = <&mo_shift>, <&kp>;
@@ -120,7 +132,7 @@
                 colemak_layer {
                         bindings = <
    &kp GRAVE          &kp Q &kp W &kp F &kp P &kp G      &kp J &kp L  &kp U     &kp Y   &kp SEMI &kp MINUS
-   &ht LSHFT TAB      &kp A &kp R &kp S &kp T &kp D      &kp H &kp N  &kp E     &kp I   &kp O    &ht RSHFT SQT
+   &hs LSHFT TAB      &kp A &kp R &kp S &kp T &kp D      &kp H &kp N  &kp E     &kp I   &kp O    &hs RSHFT SQT
    &ht LGUI LBKT      &kp Z &kp X &kp C &kp V &kp B      &kp K &kp M  &kp COMMA &kp DOT &kp FSLH &hrs RAISE RBKT
            &lt_tog ADJUST ADJUST &smt LALT SPACE &mtq LCTRL DEL      &ht RCTRL RET &kp BSPC &lt_tog RAISE RAISE
                         >;
@@ -134,7 +146,7 @@
                 qwerty_layer {
                         bindings = <
    &kp GRAVE          &kp Q &kp W &kp E &kp R &kp T      &kp Y &kp U  &kp I     &kp O   &kp P    &kp MINUS
-   &ht LSHFT TAB      &kp A &kp S &kp D &kp F &kp G      &kp H &kp J  &kp K     &kp L   &kp SEMI &ht RSHFT SQT
+   &hs LSHFT TAB      &kp A &kp S &kp D &kp F &kp G      &kp H &kp J  &kp K     &kp L   &kp SEMI &hs RSHFT SQT
    &ht LGUI LBKT      &kp Z &kp X &kp C &kp V &kp B      &kp N &kp M  &kp COMMA &kp DOT &kp FSLH &hrs RAISE RBKT
            &lt_tog ADJUST ADJUST &smt LALT SPACE &mtq LCTRL DEL      &ht RCTRL RET &kp BSPC &lt_tog RAISE RAISE
                         >;
@@ -162,7 +174,7 @@
                 raise_layer {
                         bindings = <
    &kp ESC   &kp N1     &kp N2       &kp N3       &kp N4 &kp N5     &kp N6    &kp N7   &kp N8   &kp N9    &kp N0   &kp LGUI
-   &ht LSHFT EQUAL &kp C_PREV &kp C_PP &kp C_NEXT &trans &trans     &kp PG_UP &kp HOME &kp UP   &kp END   &kp BSLH &trans
+   &hs LSHFT EQUAL &kp C_PREV &kp C_PP &kp C_NEXT &trans &trans     &kp PG_UP &kp HOME &kp UP   &kp END   &kp BSLH &trans
    &trans    &kp C_MUTE &kp C_VOL_DN &kp C_VOL_UP &trans &trans     &kp PG_DN &kp LEFT &kp DOWN &kp RIGHT &trans   &trans
                                      &trans &trans &trans         &trans   &trans   &trans
                         >;
