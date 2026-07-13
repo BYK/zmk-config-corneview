@@ -38,12 +38,24 @@
         behaviors {
                 // Tap = key, Hold = modifier. Mirrors QMK's *_T() mod-taps.
                 // "balanced" approximates QMK's PERMISSIVE_HOLD.
+                // quick-tap-ms: tap, then tap-and-hold again within 200ms repeats the tap.
                 ht: hold_tap {
                         compatible = "zmk,behavior-hold-tap";
                         #binding-cells = <2>;
                         tapping-term-ms = <200>;
-                        quick-tap-ms = <0>;
+                        quick-tap-ms = <200>;
                         flavor = "balanced";
+                        bindings = <&kp>, <&kp>;
+                };
+
+                // Like &mt (hold-preferred) but with quick-tap, so tap-then-hold repeats
+                // the tapped key (e.g. Delete) while a plain hold still gives the modifier.
+                mtq: mod_tap_quick {
+                        compatible = "zmk,behavior-hold-tap";
+                        #binding-cells = <2>;
+                        tapping-term-ms = <200>;
+                        quick-tap-ms = <200>;
+                        flavor = "hold-preferred";
                         bindings = <&kp>, <&kp>;
                 };
 
@@ -75,7 +87,7 @@
                         compatible = "zmk,behavior-hold-tap";
                         #binding-cells = <2>;
                         tapping-term-ms = <200>;
-                        quick-tap-ms = <0>;
+                        quick-tap-ms = <200>;
                         flavor = "balanced";
                         bindings = <&mo_shift>, <&kp>;
                 };
@@ -110,7 +122,7 @@
    &kp GRAVE          &kp Q &kp W &kp F &kp P &kp G      &kp J &kp L  &kp U     &kp Y   &kp SEMI &kp MINUS
    &ht LSHFT TAB      &kp A &kp R &kp S &kp T &kp D      &kp H &kp N  &kp E     &kp I   &kp O    &ht RSHFT SQT
    &ht LGUI LBKT      &kp Z &kp X &kp C &kp V &kp B      &kp K &kp M  &kp COMMA &kp DOT &kp FSLH &hrs RAISE RBKT
-           &lt_tog ADJUST ADJUST &smt LALT SPACE &mt LCTRL DEL      &ht RCTRL RET &kp BSPC &lt_tog RAISE RAISE
+           &lt_tog ADJUST ADJUST &smt LALT SPACE &mtq LCTRL DEL      &ht RCTRL RET &kp BSPC &lt_tog RAISE RAISE
                         >;
                 };
 
@@ -124,7 +136,7 @@
    &kp GRAVE          &kp Q &kp W &kp E &kp R &kp T      &kp Y &kp U  &kp I     &kp O   &kp P    &kp MINUS
    &ht LSHFT TAB      &kp A &kp S &kp D &kp F &kp G      &kp H &kp J  &kp K     &kp L   &kp SEMI &ht RSHFT SQT
    &ht LGUI LBKT      &kp Z &kp X &kp C &kp V &kp B      &kp N &kp M  &kp COMMA &kp DOT &kp FSLH &hrs RAISE RBKT
-           &lt_tog ADJUST ADJUST &smt LALT SPACE &mt LCTRL DEL      &ht RCTRL RET &kp BSPC &lt_tog RAISE RAISE
+           &lt_tog ADJUST ADJUST &smt LALT SPACE &mtq LCTRL DEL      &ht RCTRL RET &kp BSPC &lt_tog RAISE RAISE
                         >;
                 };
 

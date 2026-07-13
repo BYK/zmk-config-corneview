@@ -74,6 +74,10 @@ The tap action prints; the hold action acts as a modifier or layer.
 > Hold timing is 200 ms. Tap faster than that to get the tap action; hold longer to
 > get the modifier/layer.
 >
+> **Tap-then-hold repeats** (like the Iris): tap a dual-function key, then immediately
+> press and hold it again (within 200 ms) — it repeats the *tapped* key instead of
+> triggering the modifier/layer. Works on Tab, `'`, `=`, `]`, Enter, Delete, and Space.
+>
 > **Space** is *tap-preferred*: it only becomes Alt if you actually hold it past 200 ms,
 > so fast "space then letter" rolls always type a space (never Alt+letter). Esc and GUI
 > now live on the RAISE layer (top corners), not the base layer.
