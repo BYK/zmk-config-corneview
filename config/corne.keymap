@@ -62,13 +62,15 @@
 
                 // '/RShift: balanced = QMK permissive-hold. Shift fires if held past the
                 // term OR if another key is pressed+released while ' is down (incl. fast
-                // rolls). A lone quick tap still types '. Trade-off: contractions (don't,
-                // it's) may occasionally capitalize the next letter.
+                // rolls). A lone quick tap still types '. require-prior-idle-ms forces a
+                // plain ' when you're mid-word (another key within 100ms), so contractions
+                // (don't, it's) type cleanly while deliberate rolls after a pause Shift.
                 hsq: hold_shift_idle {
                         compatible = "zmk,behavior-hold-tap";
                         #binding-cells = <2>;
                         tapping-term-ms = <200>;
                         quick-tap-ms = <0>;
+                        require-prior-idle-ms = <100>;
                         flavor = "balanced";
                         bindings = <&kp>, <&kp>;
                 };

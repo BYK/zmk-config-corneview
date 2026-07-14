@@ -81,9 +81,9 @@ The tap action prints; the hold action acts as a modifier or layer.
 > capitals in a row) can never slip out as a stray Tab.
 >
 > The **`'`/RShift** key uses QMK-style permissive-hold (`balanced`): Right Shift fires
-> if you hold it past 200 ms **or** press another key while it's down (including fast
-> rolls); a lone quick tap types `'`. Trade-off: contractions like `don't`/`it's` may
-> occasionally capitalize the next letter — use Left Shift (Tab/Shift) if that bugs you.
+> if you hold it past 200 ms **or** press another key while it's down (a deliberate roll
+> after a brief pause); a lone quick tap types `'`. Mid-word rolls (another key within
+> 100 ms) are forced to `'`, so contractions like `don't`/`it's` type cleanly.
 >
 > **Space** is *tap-preferred*: it only becomes Alt if you actually hold it past 200 ms,
 > so fast "space then letter" rolls always type a space (never Alt+letter). Esc and GUI
