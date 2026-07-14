@@ -67,6 +67,19 @@
                         bindings = <&kp>, <&kp>;
                 };
 
+                // Like &hs, but forces a TAP if another key was pressed in the last 125ms.
+                // Used for the '/RShift key so contractions (don't, it's) type ' mid-word
+                // while a deliberate ' after a pause can still hold as Right Shift.
+                hsq: hold_shift_idle {
+                        compatible = "zmk,behavior-hold-tap";
+                        #binding-cells = <2>;
+                        tapping-term-ms = <150>;
+                        quick-tap-ms = <0>;
+                        require-prior-idle-ms = <125>;
+                        flavor = "balanced";
+                        bindings = <&kp>, <&kp>;
+                };
+
                 // Like &mt (hold-preferred) but with quick-tap, so tap-then-hold repeats
                 // the tapped key (e.g. Delete) while a plain hold still gives the modifier.
                 mtq: mod_tap_quick {
@@ -140,7 +153,7 @@
                         display-name = "Colemak";
                         bindings = <
    &kp GRAVE          &kp Q &kp W &kp F &kp P &kp G      &kp J &kp L  &kp U     &kp Y   &kp SEMI &kp MINUS
-   &hs LSHFT TAB      &kp A &kp R &kp S &kp T &kp D      &kp H &kp N  &kp E     &kp I   &kp O    &hs RSHFT SQT
+   &hs LSHFT TAB      &kp A &kp R &kp S &kp T &kp D      &kp H &kp N  &kp E     &kp I   &kp O    &hsq RSHFT SQT
    &ht LGUI LBKT      &kp Z &kp X &kp C &kp V &kp B      &kp K &kp M  &kp COMMA &kp DOT &kp FSLH &hrs RAISE RBKT
            &lt_tog ADJUST ADJUST &smt LALT SPACE &mtq LCTRL DEL      &ht RCTRL RET &kp BSPC &lt_tog RAISE RAISE
                         >;
@@ -155,7 +168,7 @@
                         display-name = "QWERTY";
                         bindings = <
    &kp GRAVE          &kp Q &kp W &kp E &kp R &kp T      &kp Y &kp U  &kp I     &kp O   &kp P    &kp MINUS
-   &hs LSHFT TAB      &kp A &kp S &kp D &kp F &kp G      &kp H &kp J  &kp K     &kp L   &kp SEMI &hs RSHFT SQT
+   &hs LSHFT TAB      &kp A &kp S &kp D &kp F &kp G      &kp H &kp J  &kp K     &kp L   &kp SEMI &hsq RSHFT SQT
    &ht LGUI LBKT      &kp Z &kp X &kp C &kp V &kp B      &kp N &kp M  &kp COMMA &kp DOT &kp FSLH &hrs RAISE RBKT
            &lt_tog ADJUST ADJUST &smt LALT SPACE &mtq LCTRL DEL      &ht RCTRL RET &kp BSPC &lt_tog RAISE RAISE
                         >;
