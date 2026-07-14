@@ -67,16 +67,15 @@
                         bindings = <&kp>, <&kp>;
                 };
 
-                // Like &hs, but forces a TAP if another key was pressed in the last 125ms.
-                // Used for the '/RShift key so contractions (don't, it's) type ' mid-word
-                // while a deliberate ' after a pause can still hold as Right Shift.
+                // '/RShift: tap-preferred so ' types on any tap (incl. contractions like
+                // don't/it's), and it ONLY becomes Right Shift if physically held past the
+                // tapping term. Interrupting keys never force the hold.
                 hsq: hold_shift_idle {
                         compatible = "zmk,behavior-hold-tap";
                         #binding-cells = <2>;
-                        tapping-term-ms = <150>;
+                        tapping-term-ms = <200>;
                         quick-tap-ms = <0>;
-                        require-prior-idle-ms = <125>;
-                        flavor = "balanced";
+                        flavor = "tap-preferred";
                         bindings = <&kp>, <&kp>;
                 };
 

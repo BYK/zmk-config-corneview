@@ -80,9 +80,9 @@ The tap action prints; the hold action acts as a modifier or layer.
 > do not** — quick-tap is disabled on the Shift keys so rapid Shift presses (e.g. two
 > capitals in a row) can never slip out as a stray Tab.
 >
-> The **`'`/RShift** key also forces an apostrophe if you were just typing (another key
-> within 125 ms), so contractions like `don't` and `it's` type cleanly. To use it as
-> Right Shift, press it after a brief pause.
+> The **`'`/RShift** key is *tap-preferred*: any tap types `'` (so contractions like
+> `don't` and `it's` always work), and it only becomes Right Shift if you deliberately
+> hold it past 200 ms — interrupting keys never force the Shift.
 >
 > **Space** is *tap-preferred*: it only becomes Alt if you actually hold it past 200 ms,
 > so fast "space then letter" rolls always type a space (never Alt+letter). Esc and GUI
