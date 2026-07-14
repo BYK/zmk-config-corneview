@@ -67,15 +67,16 @@
                         bindings = <&kp>, <&kp>;
                 };
 
-                // '/RShift: tap-preferred so ' types on any tap (incl. contractions like
-                // don't/it's), and it ONLY becomes Right Shift if physically held past the
-                // tapping term. Interrupting keys never force the hold.
+                // '/RShift: balanced = QMK permissive-hold. Shift fires if held past the
+                // term OR if another key is pressed+released while ' is down (incl. fast
+                // rolls). A lone quick tap still types '. Trade-off: contractions (don't,
+                // it's) may occasionally capitalize the next letter.
                 hsq: hold_shift_idle {
                         compatible = "zmk,behavior-hold-tap";
                         #binding-cells = <2>;
                         tapping-term-ms = <200>;
                         quick-tap-ms = <0>;
-                        flavor = "tap-preferred";
+                        flavor = "balanced";
                         bindings = <&kp>, <&kp>;
                 };
 
