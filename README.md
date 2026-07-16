@@ -99,28 +99,33 @@ left hand has media/volume. Esc and GUI sit on the top corners:
 ,-----------------------------------------.                ,-----------------------------------------.
 | ESC  |  1  |  2  |  3  |  4  |  5  |                      |  6  |  7  |  8  |  9  |  0  | GUI  |
 |------+-----+-----+-----+-----+-----|                      |-----+-----+-----+-----+-----+------|
-|  =   | <<  | >|| | >>  |     |     |                      | PGUP| HOME|  UP | END |  \  |      |
+|  =   | <<  | >|| | >>  |     |     |                      | PGUP| HOME|  UP | END |     |  \   |
 |------+-----+-----+-----+-----+-----|                      |-----+-----+-----+-----+-----+------|
 |      | MUTE| VL- | VL+ |     |     |                      | PGDN| LEFT| DWN | RGT |     |      |
 `-----------------------------------'                      `------------------------------------'
 ```
 
 - **Numbers:** 1 2 3 4 5 / 6 7 8 9 0 across the top row (Esc left corner, GUI right corner).
+  **Long-press any digit for its symbol** (1→!, 2→@ … 0→)) — see Symbols below.
 - **Inverted-T arrows:** UP on the top-right row, LEFT/DOWN/RIGHT below it.
-- **Navigation:** HOME/END flank UP; PAGE UP/DOWN on the outer column; `\` next to END.
+- **Navigation:** HOME/END flank UP; PAGE UP/DOWN on the outer column; `\` sits under GUI
+  (long-press for `|`).
 - **Media:** prev / play-pause / next on the left home row.
 - **Volume:** mute / vol- / vol+ on the left bottom row.
 
 ### Symbols
 
-There's no separate symbols layer. Two ways to type them:
+There's no separate symbols layer. Three ways to type them:
 
+- **Long-press (easiest):** on RAISE, hold a number key for its shifted symbol —
+  tap `4` → `4`, hold `4` → `$`. Covers `!@#$%^&*()` on 1–0, and `\` → `|`. It's
+  tap-preferred, so fast number typing never accidentally shifts.
 - **One key:** hold the bottom-right **]** key — it engages RAISE **and** Left Shift
   together, so the number row types `!@#$%^&*()` while held (and Shift+arrows selects).
 - **Manual:** **RAISE + Shift + number** → e.g. RAISE makes `4`, Shift makes it `$`.
 
-(`!@#$%^&*()` are just shifted digits; `_ + { } | :` etc. come from shifting the
-other RAISE/base keys. The RAISE `=` key also holds Left Shift.)
+(`_ + { } | :` etc. come from shifting the other RAISE/base keys. The RAISE `=` key
+also holds Left Shift.)
 
 ### Word movement (Ctrl + arrows)
 
