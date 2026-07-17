@@ -203,8 +203,8 @@
                 //                  |    |    |    |   |    |    |    |
                 raise_layer {
                         bindings = <
-   &kp ESC   &num N1 EXCL &num N2 AT &num N3 HASH &num N4 DLLR &num N5 PRCNT     &num N6 CARET &num N7 AMPS &num N8 STAR &num N9 LPAR &num N0 RPAR &kp LGUI
-   &hs LSHFT EQUAL &kp C_PREV &kp C_PP &kp C_NEXT &trans &trans     &kp PG_UP &kp HOME &kp UP   &kp END   &trans   &num BSLH PIPE
+   &kp ESC   &num EXCL N1 &num AT N2 &num HASH N3 &num DLLR N4 &num PRCNT N5     &num CARET N6 &num AMPS N7 &num STAR N8 &num LPAR N9 &num RPAR N0 &kp LGUI
+   &hs LSHFT EQUAL &kp C_PREV &kp C_PP &kp C_NEXT &trans &trans     &kp PG_UP &kp HOME &kp UP   &kp END   &trans   &num PIPE BSLH
    &trans    &kp C_MUTE &kp C_VOL_DN &kp C_VOL_UP &trans &trans     &kp PG_DN &kp LEFT &kp DOWN &kp RIGHT &trans   &trans
                                      &trans &trans &trans         &trans   &trans   &trans
                         >;
